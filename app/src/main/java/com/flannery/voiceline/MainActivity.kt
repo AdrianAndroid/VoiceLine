@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity(), Runnable {
     private var mMediaRecorder: MediaRecorder? = null
     private var isAlive = true
     private var voiceLineView: VoiceLineView? = null
+    private var waveLineView: WaveLineView? = null
     private var stopVoice: Button? = null
     private val handler: Handler = object : Handler(Looper.getMainLooper()) {
         override fun handleMessage(msg: Message) {
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity(), Runnable {
             //主要，这个方法必须在ui线程中调用
 //            Log.i("=======", db+"");
             voiceLineView!!.setVolume(db.toInt()) //这里穿进去的就是分贝
+            waveLineView?.setVolume(db.toInt())
             Log.i("MainActivity", "handleMessage: $db")
         }
     }
@@ -40,6 +42,7 @@ class MainActivity : AppCompatActivity(), Runnable {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         voiceLineView = findViewById<VoiceLineView>(R.id.voicLine)
+        waveLineView = findViewById<WaveLineView>(R.id.waveLineView)
 
         if (ContextCompat.checkSelfPermission(this,
                 android.Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED

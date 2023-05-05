@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:voiceView="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <Button
         android:id="@+id/stopVoice"
@@ -19,10 +20,16 @@
 <!--        voiceView:fineness="one"-->
 <!--        voiceView:lineSpeed="1250" />-->
 
+    <com.flannery.voiceline.WaveLineView
+        android:id="@+id/waveLineView"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        voiceView:wlvBackgroundColor="@android:color/transparent" />
+
     <com.flannery.voiceline.VoiceLineView
         android:id="@+id/voicLine"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="200dp"
         android:layout_alignParentBottom="true"
         android:background="@android:color/white"
         voiceView:fineness="one"
@@ -34,4 +41,4 @@
         voiceView:sensibility="four"
         voiceView:viewMode="rect"
         voiceView:voiceLine="@android:color/holo_red_light" />
-</RelativeLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>
